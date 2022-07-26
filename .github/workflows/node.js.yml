@@ -60,6 +60,17 @@ jobs:
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
+
+      - run: echo EC2ADDR=$(terraform output publicaddr) >> $GITHUB_ENV
+
+      - uses: actions/download-artifact@v3
+          with:
+          name: buildfolder
+          path: builddown/
+
+      
+
+      
      
      
      

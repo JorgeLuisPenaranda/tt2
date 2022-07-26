@@ -84,3 +84,7 @@ resource "aws_security_group" "tt2sg" {
     Name = "allow_tls"
   }
 }
+
+output "publicaddr" {
+    value = "${aws_instance.web.public_dns}"  
+}

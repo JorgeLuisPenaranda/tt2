@@ -17,14 +17,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -43,3 +39,25 @@ jobs:
       with:
         name: buildfolder
         path: build/
+
+  deploy:
+    needs: build
+    name: "Deploy To AWS ENV"
+    runs-on: ubuntu-latest
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v3
+
+     - name: Terraform Setup
+       uses: hashicorp/setup-terraform@v2
+         with:
+           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }} 
+       
+     
+     
+     
+
+
+
+
+

@@ -39,3 +39,7 @@ jobs:
     - run: CI=true npm run test
     - run: npm run build
     - run: ls -al
+    - uses: actions/upload-artifact@v3
+      with:
+        name: buildfolder
+        path: build/

@@ -62,7 +62,7 @@ jobs:
         run: terraform apply -auto-approve
 
       - run: echo EC2ADDR=$(terraform output publicaddr) >> $GITHUB_ENV
-      - run: echo $ {{ env.EC2ADDR }}
+      - run: echo ${{ env.EC2ADDR }}
 
       - uses: actions/download-artifact@v3
         with:

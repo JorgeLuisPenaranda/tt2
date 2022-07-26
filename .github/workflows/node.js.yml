@@ -69,3 +69,12 @@ jobs:
         with:
           name: buildfolder
           path: builddown/
+
+      - name: Deploy to Staging server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: "builddown/"
+          REMOTE_HOST: ${{ env.EC2ADDR }}
+          REMOTE_USER: "ubuntu"
+          TARGET: "/var/www/html/"

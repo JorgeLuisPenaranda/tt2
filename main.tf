@@ -11,7 +11,7 @@ terraform {
     organization = "test01org"
 
     workspaces {
-      name = "Production"
+      name = "Dev"
     }
   }
 }
